@@ -6,7 +6,7 @@ describe 'Session' do
   describe 'GET /' do
     it 'displays a login link' do
       visit root_path
-      page.should have_link('Beta login')
+      page.should have_link('Login')
     end
   end
 
@@ -19,11 +19,11 @@ describe 'Session' do
     end
     it 'does not allow user to log in with bad creds' do
       visit root_path
-      click_link('Beta login')
+      click_link('Login')
       fill_in('Email', :with => user.email)
       fill_in('Password', :with => 'POOP')
-      click_button('Login to Spotifriends')
-      page.should have_button('Login to Spotifriends')
+      click_button('Sign in')
+      page.should have_button('Sign in')
     end
   end
 
@@ -33,8 +33,8 @@ describe 'Session' do
     it 'logs the user of the system' do
       login_to_system(user)
       click_link('Logout')
-      page.driver.browser.switch_to.alert.accept
-      page.should have_link('Beta login')
+      # page.driver.browser.switch_to.alert.accept
+      page.should have_link('Sign up')
     end
   end
 end

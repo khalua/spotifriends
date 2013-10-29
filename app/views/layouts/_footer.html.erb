@@ -6,8 +6,8 @@
 
       <div class="large-6 columns">
         <p>&copy; Copyright yo momma</p>
-        <% if @auth.present? %>
-          <p>Logged in as: <%= @auth.email  %> </p>
+        <% if current_user %>
+          <p>Logged in as: <%= current_user.email  %> </p>
         <% end %>
       </div>
 

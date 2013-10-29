@@ -1,0 +1,4 @@
+= simple_form_for @group, url: create_group_contests_path, remote: true do |f|
+  = f.input :name
+  = f.input :description
+  = f.button :submit, 'Create group'

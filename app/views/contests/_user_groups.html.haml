@@ -1,0 +1,8 @@
+%table
+  %thead
+    - @groups.each do |group|
+      %th
+        = "Group Name: #{group.name}"
+      - group.users.each do |user|
+        %tr
+          %td= user.email

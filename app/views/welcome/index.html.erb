@@ -23,7 +23,6 @@
       <h4>Compete with your friends and see who has the best taste in music!</h4>
 
       <p>Spotifriends helps you run contests to discover new music. It's pretty goddamn amazing.  </p>
-
       <p></p>
 
     </div>
@@ -32,3 +31,6 @@
     </div>
   </div>
 
+<% if @current_user %>
+  <%= link_to "Claim your account", new_password_path(session[:user_id]) %>
+<% end %>

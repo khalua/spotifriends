@@ -15,7 +15,7 @@
       = @contest.start_date
       to
       = @contest.end_date
-      - if !@auth.in?(@contest.entries) #user does not have an entry in this contest
+      - if !current_user.in?(@contest.entries) #user does not have an entry in this contest
         %br
         = link_to 'Add your song', new_contest_song_path(@contest), :class => 'button radius'
 
@@ -31,11 +31,11 @@
         - @contest.songs.each do |song|
           %tr
             %td
-              - if !@contest.users_that_voted.include?(@auth.id) #OK to vote
-                - if !song.in?(@auth.songs) #not ok to vote on your own song
+              - if !@contest.users_that_voted.include?(current_user.id) #OK to vote
+                - if !song.in?(current_user.songs) #not ok to vote on your own song
                   .vote= button_tag 'Vote', :id => 'vote_button', :'data-song-id' => song.id ,:class => 'button radius success tiny'
-              -elsif @contest.users_that_voted.include?(@auth.id) #already voted
-                - if song.id == @contest.votes.select {|x| x.user_id == @auth.id }.first.song_id #voted song
+              -elsif @contest.users_that_voted.include?(current_user.id) #already voted
+                - if song.id == @contest.votes.select {|x| x.user_id == current_user.id }.first.song_id #voted song
                   .checkbox= image_tag('checkbox.png', :size => '35x35')
               - else
               .checkbox.hide= image_tag('checkbox.png', :size => '35x35')

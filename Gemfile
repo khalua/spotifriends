@@ -3,7 +3,7 @@ gem 'rails'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml'
-gem 'bcrypt-ruby'
+# gem 'bcrypt-ruby'
 gem 'nokogiri'
 gem 'simple_form'
 gem 'squeel'
@@ -11,6 +11,8 @@ gem 'carrierwave'
 gem 'fog'
 gem 'rmagick'
 gem 'remotipart'
+gem 'devise'
+gem 'cancan'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
@@ -25,7 +27,8 @@ group :development, :test do
   gem 'rb-fsevent'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'rubyzip',  "~> 0.9.9"
+  gem 'selenium-webdriver', "~> 2.34.0"
   gem 'launchy'
   gem 'database_cleaner'
   gem 'pry-rails'
