@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rails'
+gem 'rails', '4.0.1'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml'
@@ -11,12 +11,16 @@ gem 'carrierwave'
 gem 'fog'
 gem 'rmagick'
 gem 'remotipart'
+gem 'unf'
+#adding these for 4.0 update
+gem 'protected_attributes'
+gem 'actionpack-action_caching'
+gem 'activerecord-session_store'
+gem 'rails-observers'
 
-group :assets do
-  gem 'sass-rails', '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 group :development, :test do
   gem 'coffee-rails-source-maps'

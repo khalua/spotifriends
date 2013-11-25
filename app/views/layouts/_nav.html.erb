@@ -10,7 +10,7 @@
     </ul>
   </li>
   <li><%= link_to('Your settings', user_path(@auth), :class => 'button') %> </li>
-  <li><%= link_to('Logout', login_path, :method => :delete, :confirm => 'Sure?', :class => 'button') %></li>
+  <li><%= link_to('Logout', login_path, :method => :delete, :data => { :confirm => 'Sure?'}, :class => 'button') %></li>
   <% else %>
   <li><%= link_to("Beta login", login_path, :class => 'button') %></li>
   <li><%= link_to("Request account", new_request_path, :class => 'button') %></li>
