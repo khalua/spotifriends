@@ -1,0 +1,3 @@
+$('#new_group_form').empty();
+$('#new_contest_form').empty().append('<%=j render(partial: 'contests/new',  object: @contest ) %>');
+$('#show_user_groups').empty().append('<%=j render(partial: 'contests/user_groups', object: @groups) %>');

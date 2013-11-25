@@ -2,18 +2,22 @@
 
 <ul class="button-group round small right">
   <li><a href="/" class="button">Home</a></li>
-  <% if @auth.present? %>
-  <li><a data-dropdown="drop1" href="#" class='button dropdown'>Contests manager</a>
-    <ul id='drop1' class='f-dropdown'>
-      <li><%= link_to('Active contests', contests_path) %></li>
-      <li><%= link_to('New contest', new_contest_path) %></li>
-    </ul>
-  </li>
-  <li><%= link_to('Your settings', user_path(@auth), :class => 'button') %> </li>
-  <li><%= link_to('Logout', login_path, :method => :delete, :data => { :confirm => 'Sure?'}, :class => 'button') %></li>
-  <% else %>
-  <li><%= link_to("Beta login", login_path, :class => 'button') %></li>
-  <li><%= link_to("Request account", new_request_path, :class => 'button') %></li>
-  <% end %>
+  <% if user_signed_in? %>
+		<% if current_user.logged_in_with_pwd == false %>
+        	<li><%= link_to "Claim your account", claim_account_path(current_user), :class => 'button' %></li>
+        <% else %>
+			<li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'button' %></li>
+      <li><%= link_to 'New contest', new_contest_path, :class => 'button' %></li>
+      <li><%= link_to 'My contests', contests_path, :class => 'button' %></li>
+		<% end %>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button'  %></li>
+      <% else %>
+        <li><%= link_to "Sign up", new_user_registration_path, :class => 'button'  %></li>
+        <li><%= link_to "Login", new_user_session_path, :class => 'button'  %></li>
+      <% end %>
 </ul>
+
+  <% if user_signed_in? %>
+  	Logged in as <strong><%= current_user.email %></strong>
+  <% end %>
 <!-- End Navigation -->

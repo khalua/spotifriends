@@ -1,6 +1,9 @@
 class SongsController < ApplicationController
+  load_and_authorize_resource
+
   before_filter :get_contest, :except => [:get_song_info]
   before_filter :one_song, :only => [:new, :create]
+
 
   def index
     @songs = @contest.songs
@@ -13,7 +16,7 @@ class SongsController < ApplicationController
 
   def create
     @song = Song.create(params[:song])
-    @song.users << @auth
+    @song.users << current_user
     @contest.songs << @song
     redirect_to(@contest)
   end
@@ -35,7 +38,7 @@ class SongsController < ApplicationController
   end
 
   def one_song
-    redirect_to(@contest) if @auth.in?(@contest.entries)
+    redirect_to(@contest) if current_user.in?(@contest.entries)
   end
 
 end

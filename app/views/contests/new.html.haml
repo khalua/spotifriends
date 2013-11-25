@@ -1,23 +1,10 @@
 .row
   .large-1.column
   .large-6.column
-    %p
-      Your groups:
-      %br
-      - @groups.each do |group|
-        = group.name
-        - group.users.each do |user|
-          ,
-          = user.first_name
-        %br
+    #new_group_form
+    #show_user_groups
+      =render(partial: 'user_groups',  object: @groups )
 
   .large-5.column
-    = simple_form_for @contest do |f|
-      = f.input :name
-      = f.input :description
-      = f.input :start_date, as: :string, :input_html => {:class => 'ui-date-picker'}
-      = f.input :start_time, as: :string, :input_html => {:class => 'ui-timepicker-input'}
-      = f.input :end_date, as: :string, :input_html => {:class => 'ui-date-picker'}
-      = f.input :end_time, as: :string, :input_html => {:class => 'ui-timepicker-input'}
-      = f.association :group
-      = f.button :submit, 'Create contest'
+    #new_contest_form
+      =render(partial: 'new', object: @contest)

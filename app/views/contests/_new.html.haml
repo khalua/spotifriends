@@ -1,0 +1,10 @@
+= simple_form_for @contest do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :start_date, as: :string, :input_html => {:class => 'ui-date-picker'}
+  = f.input :start_time, as: :string, :input_html => {:class => 'ui-timepicker-input'}
+  = f.input :end_date, as: :string, :input_html => {:class => 'ui-date-picker'}
+  = f.input :end_time, as: :string, :input_html => {:class => 'ui-timepicker-input'}
+  = link_to('Add Group', add_group_contests_path, remote: true)
+  = f.association :group, :collection => @groups
+  = f.button :submit, 'Create contest'

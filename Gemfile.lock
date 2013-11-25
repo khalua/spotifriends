@@ -44,6 +44,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.1.4)
     callsite (0.0.11)
+    cancan (1.6.10)
     capybara (2.2.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -77,6 +78,11 @@ GEM
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.4)
+    devise (3.0.0)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     excon (0.28.0)
@@ -139,6 +145,7 @@ GEM
     net-ssh (2.7.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    orm_adapter (0.5.0)
     pg (0.17.0)
     polyamorous (0.6.4)
       activerecord (>= 3.0)
@@ -201,16 +208,16 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     ruby-hmac (0.4.0)
-    rubyzip (1.0.0)
+    rubyzip (0.9.9)
     sass (3.2.12)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    selenium-webdriver (2.37.0)
+    selenium-webdriver (2.34.0)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
-      rubyzip (~> 1.0.0)
+      rubyzip
       websocket (~> 1.0.4)
     simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
@@ -244,6 +251,8 @@ GEM
     unf (0.1.3)
       unf_ext
     unf_ext (0.0.6)
+    warden (1.2.3)
+      rack (>= 1.0)
     websocket (1.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -255,14 +264,15 @@ DEPENDENCIES
   actionpack-action_caching
   activerecord-session_store
   annotate
-  bcrypt-ruby
   better_errors
   binding_of_caller
+  cancan
   capybara
   carrierwave
   coffee-rails
   coffee-rails-source-maps
   database_cleaner
+  devise (= 3.0)
   factory_girl_rails
   fog
   guard-rspec
@@ -283,8 +293,9 @@ DEPENDENCIES
   remotipart
   rmagick
   rspec-rails
+  rubyzip (~> 0.9.9)
   sass-rails
-  selenium-webdriver
+  selenium-webdriver (~> 2.34.0)
   simple_form
   squeel
   uglifier
